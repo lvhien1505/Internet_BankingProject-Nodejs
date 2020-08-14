@@ -1,0 +1,307 @@
+<!doctype html>
+
+<!-- begin code hien thi thong tin dang xu ly  added by nhaht 01/10/2017-->
+
+<style>
+    .fixed {
+        position: absolute;
+        width: 300px;
+        height: 100px;
+        border: 1px solid #73AD21;
+        z-index: 3;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>
+
+<script type="text/javascript" src="js/qrcode.js"></script>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width">
+
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/reponsive.css">
+    <!-- jQuery Calendar -->
+    <script type="text/javascript" src="lib/jquery-1.8.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/calendar/jquery-ui.css">
+    <script type="text/javascript" src="lib/calendar/jquery-ui.js"></script>
+    <script>
+        var $j = jQuery.noConflict();
+        $j(function() {
+            $j("#datepickerFrom, #datepickerTo").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+        });
+
+        var $k = jQuery.noConflict();
+    </script>
+    <script type="text/javascript" src="lib/jquery-1.10.2.js"></script>
+    <script>
+        $k(document).ready(function() {
+
+            //called when key is pressed in textbox
+            $k("#amountTransfer").keypress(function(e) {
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    return false;
+                }
+            });
+
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="lib/calendar/jquery-ui.css">
+    <script type="text/javascript" src="lib/calendar/jquery-ui.js"></script>
+    <script>
+        var $h = jQuery.noConflict();
+        var $h = jQuery.noConflict();
+        $h(function() {
+            $h("#datepickerFrom, #datepickerTo, #NGAY_QDINH").datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+        var $a = jQuery.noConflict();
+        $a(document).ready(
+            function() {
+
+                $a('#KBNN').change(
+                    function(event) {
+                        var KBNN = $a("select#KBNN").val();
+                        $a.get('JsonServlet', {
+                            KBNN: KBNN
+                        }, function(response) {
+
+                            var select = $a('#DBHC');
+                            select.find('option').remove();
+                            $a.each(response, function(key, value) {
+                                $a('<option>').val(key + ";;" + value)
+                                    .text(value).appendTo(select);
+                            });
+                        });
+                    });
+            });
+
+        var $b = jQuery.noConflict();
+        $b(document).ready(
+            function() {
+                $b("input").focus(function() {
+                    $b(this).on("mouseup.a keyup.a", function(e) {
+                        $b(this).off("mouseup.a keyup.a").select();
+                    });
+                });
+
+                // event logger
+                var $c = jQuery.noConflict();
+                $c("input").on(
+                    "mousedown focus mouseup click blur " +
+                    "keydown keypress keyup change",
+                    function(e) {
+                        console.log(e.type);
+                    });
+            });
+    </script>
+    <!-- Tranhistory Paging -->
+    <style type="text/css">
+        .paging-nav {
+            text-align: right;
+            padding-top: 2px;
+        }
+        
+        .paging-nav a {
+            margin: auto 1px;
+            text-decoration: none;
+            display: inline-block;
+            padding: 1px 7px;
+            background: #91b9e6;
+            color: white;
+            border-radius: 3px;
+        }
+        
+        .paging-nav .selected-page {
+            background: #187ed5;
+            font-weight: bold;
+        }
+        
+        .paging-nav,
+        #ibTransList {
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+
+
+    <!-- end //jQuery -->
+    <!-- pure js -->
+    <!-- JavaScript -->
+    <script src="js/numeral.min.js"></script>
+    <script src="js/ibTrans.js"></script>
+    <script src="js/pure.js"></script>
+    <script src="js/ibtax.js"></script>
+    <script src="js/ib-fund-incorp.js"></script>
+    <script src="js/ib-fund-excorp.js"></script>
+    <script type="text/javascript" src="js/ib-saving-online.js"></script>
+    <script type="text/javascript" src="js/ib-thue-haiquan.js"></script>
+    <script type="text/javascript" src="js/ib-tong-lien-doan-lao-dong-vn.js"></script>
+    <!-- end of pure js -->
+
+    <title>Agribank Internet Banking | Transaction Page</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="wrapper">
+            <div class="logo">
+                <a title="Agribank" href="#"><img src="img/logo_agribank.png" /></a>
+            </div>
+            <!--end .logo-->
+            <div class="pageStatus">
+
+            </div>
+            <!--end .page status-->
+            <br class="clear">
+        </div>
+    </div>
+    <!--end .header-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="section height_x">
+        <div class="wrapper">
+
+        </div>
+    </div>
+
+
+
+    <!--end .section-->
+
+    <div class="content">
+        <div class="wrapper">
+
+            <div class="aside">
+                <ul id="browser" class="navAside">
+                    <li class="closed"><a href="/signin">Trang chủ</a></li>
+                    <li class="closed">
+                        <a href="#"></a>
+                        <ul>
+                            <li><a href="/thongtin">Thông tin tài khoản</a></li>
+                            <li><a href="/chuyenkhoan">Chuyển khoản</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="closed"><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <!--end .aside-->
+
+            <div class="mainContent">
+
+                <ul class="listService">
+                    <li>
+                        <a href="#" class="wImgService"><img src="img/i-service_3.png" /></a>
+                        <h2>
+                            <a href="/thongtin">Thông tin tài khoản</a>
+                        </h2>
+                    </li>
+
+
+
+                    <li>
+                        <a href="#" class="wImgService"><img src="img/i-service_4.png" /></a>
+                        <h2>
+                            <a href="/chuyenkhoan">Chuyển khoản</a>
+                        </h2>
+                    </li>
+
+
+
+                    <br class="clear">
+                </ul>
+                <!--end list Service-->
+
+            </div>
+            <!--end .mainContent-->
+            <br class="clear">
+
+        </div>
+    </div>
+    <!--end .content-->
+
+    <div class="footer">
+        <div class="wrapper">
+            <div class="r_footer">
+                <table width="135" border="0" cellpadding="2" cellspacing="0" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
+                    <tr>
+                        <td width="135" align="center" valign="top">
+                            <script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=ibank.agribank.com.vn&amp;size=S&amp;use_flash=YES&amp;use_transparent=YES&amp;lang=en"></script><br />
+                            <a href="https://www.symantec.com/ssl-certificates" target="_blank" style="color: #000000; text-decoration: none; font: bold 7px verdana, sans-serif; letter-spacing: .5px; text-align: center; margin: 0px; padding: 0px;">ABOUT
+								SSL CERTIFICATES</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="contFooter">
+                <p>&copy; 2009 - 2019 Bản quyền thuộc về</p>
+                <p>Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam</p>
+            </div>
+            <br class="clear">
+        </div>
+    </div>
+    <!--end .footer-->
+
+</body>
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js',
+        'ga');
+    ga('create', 'UA-72017488-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+<!-- begin code hien thi thong tin dang xu ly: added by nhaht 01/10/2017-->
+<!-- <script>if (document.all) document.all.loadingmsg.style.visibility='hidden';</script>
+<script>if (document.layers) document.loadingmsg.visibility='hidden'</script>
+<script>if (document.getElementById) document.getElementById('loadingmsg').style.visibility='hidden'</script> -->
+<!-- End code hien thi thong tin dang xu ly: added by nhaht 01/10/2017-->
+
+</html>

