@@ -5,19 +5,18 @@ const { errorHandler } = require('../helpers/dbErrorHandler');
 const { json } = require('body-parser');
 
 exports.signup = (req, res) => {
-    console.log('req.body', req.body);
     const user = new User(req.body);
     user.save((err, user) => {
         if (err) {
-            return res.status(400).json({
-                err: errorHandler(err)
+            return res.status(200).json({
+                error: errorHandler(err)
             })
         }
         // k hiển thị ra
         user.salt = undefined;
         user.hashed_password = undefined;
         res.json({
-            user
+            message:'Tao tai khoan thanh cong'
         });
     });
 };
@@ -29,14 +28,14 @@ exports.signin = (req, res) => {
     console.log(email,password);
     User.findOne({ email }, (err, user) => {
         if (err || !user) {
-            return res.status(400).json({
+            return res.status(200).json({
                 error: 'User with that email does not exits. Please signup'
             });
         }
         // if user is found make sure the email and password match
         // create authenticate method in user model
         if (!user.authenticate(password)) {
-            return res.status(401).json({
+            return res.status(200).json({
                 error: 'Email and password dont math'
             });
         }
@@ -45,16 +44,18 @@ exports.signin = (req, res) => {
 
         // persist the token as 't' in cookie with expiry date
         res.cookie('t', token, { expire: new Date() + 9999 });
+        
 
         // return response with user and token to frontend client
-        const { _id, name, email, role } = user;
-        return res.json({ token, user: { _id, email, name, role } });
+        const { _id, name, email, role,isActive } = user;
+        return res.json({ token, user: { _id, email, name, role,isActive } });
     });
 };
 
 exports.signout = (req, res) => {
     res.clearCookie('t');
-    res.json({ message: "Signout success" });
+    res.redirect('/signin');
+   
 }
 
 

@@ -11,12 +11,16 @@ const cookieParser = require('cookie-parser');
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const historyRoutes = require('./routes/history');
 const expressValidator = require('express-validator');
+
+const {ktuser}=require('./controllers/user')
 
 const path=require('path');
 // app
 const app = express();
 // db
+
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -26,7 +30,7 @@ app.set('view engine', 'ejs');
 mongoose.connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 }).then(() => console.log('DB Connected'));
 
 
@@ -36,16 +40,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
 
+app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 
 // routes middleware
-app.use('/',indexRoutes);
+app.use("/",indexRoutes);
 app.use("/", authRoutes);
 app.use("/", userRoutes);
+app.use("/history",historyRoutes);
 
-
+app.post('/api/checkUser',ktuser)
 
 const port = process.env.PORT || 8000;
 

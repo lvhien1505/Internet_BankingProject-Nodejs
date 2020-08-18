@@ -31,4 +31,25 @@ router.get('/chuyenkhoan',(req,res)=>{
 })
 
 
+router.get('/dashboard',(req,res)=>{
+    res.render('dashboardAdmin');
+})
+
+
+router.get('/update',(req,res)=>{
+    res.render('updateInfoUser');
+})
+
+
+router.get('/lichsu',(req,res)=>{
+    res.render('historyDeal');
+})
+
+
+
+
+
+
+
+
 module.exports = router;

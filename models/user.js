@@ -40,7 +40,16 @@ const userSchema = new mongoose.Schema({
         unique:true,
         required:true
     },
+    numMoney:{
+        type:Number,
+        default:0.0
+
+    },
     salt: String,
+    isActive:{
+        type:Boolean,
+        default:true
+    },
     role: {
         type: Number,
         default: 0

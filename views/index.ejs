@@ -12,27 +12,14 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
     <link rel="stylesheet" type="text/css" href="css/reponsive.css">
-    <script type="text/javascript" src="js/pure.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <script>
-        var browser = navigator.appName;
-        var version = get_browser_version();
-
-        if (browser == "Microsoft Internet Explorer") {
-            if (version <= "9.0") {
-                var r = window.confirm("Trình duyệt của quý khách đã lỗi thời, vui lòng nâng cấp lên phiên bản mới hơn để sử dụng hệ thống");
-                if (r == true)
-                    document.location.href = "https://windows.microsoft.com/vi-vn/internet-explorer/download-ie";
-                else
-                    document.location.href = "https://agribank.com.vn";
-            }
-        }
-    </script>
     <title>Agribank Internet Banking | Home Page</title>
     <script
     src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"
+  ></script>
 </head>
 
 <body>
@@ -73,15 +60,15 @@
                     <div class="wrap_reg">
                         <div class="mReg left_mReg">
 
+                          <div class="template-alert"></div>
 
 
 
 
-
-                            <form >
+                            <form>
                                 <label>Tên đăng nhập</label>
                                 <div class="row_input">
-                                    <input type="text" name="userName" value="" id="user" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
+                                    <input type="text" name="userName" value="" id="email" autocomplete="off" required> <img src="img/i-keyboard.png" id="inter-type" class="tooltip-jatt imgKey" title="Nhập bằng bàn phím ảo">
                                 </div>
                                 <label>Mật khẩu đăng nhập</label>
                                 <div class="row_input">
@@ -89,11 +76,10 @@
                                 </div>
 
                                 <div class="row_btn">
-                                    <button type="button" name="doOK" id="btn-signin" value="đăng nhập">Đăng nhập</button>
+                                    <button type="button" name="doOK" id="btn" value="đăng nhập">Đăng nhập</button>
 
                                     <a href="/signup">Đăng Kí</a>
-                                    <!--<button type="button">Đăng ký ngay</button>-->
-                                    <input name="currentPage" type="hidden" class="textControl" id="currentPage" value="./" /> <input name="clientID" type="hidden" id="clientID" value="null" />
+
                                 </div>
 
 
@@ -118,8 +104,8 @@
                             <div class="helpSer">
                                 <h3>Trợ giúp</h3>
                                 <ul>
-                                    <li><a href="./CanhBaoGiaoDichGiaMaoDichVuNganHangDienTu.pdf" style="color:#AF1E40 !important;font-size: 20px;font-family: Helvetica, sans-serif !important;">Khuyến Cáo Bảo Mật Thông Tin</a></li>
-                                    <li><a href="./Agr_clearCache.doc" style="color:#AF1E40 !important;">Xóa cache trên web browser</a></li>
+                                    <li><a href="#" style="color:#AF1E40 !important;font-size: 20px;font-family: Helvetica, sans-serif !important;">Khuyến Cáo Bảo Mật Thông Tin</a></li>
+                                    <li><a href="#" style="color:#AF1E40 !important;">Xóa cache trên web browser</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -157,44 +143,54 @@
     <!--end .footer-->
 
 </body>
-<script type="text/javascript">
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-72017488-1', 'auto');
-    ga('send', 'pageview');
-</script>
-
 <script>
-    $('#btn-signin').click(function(){
-          const user=$('#user').val();
-          const pass=$('#pass').val();
-          console.log(user,pass)
-          $.ajax({
+         $('#btn').click(function(){
+            $('.template-alert').html('')
+       const email=$('#email').val();
+       const pass=$('#pass').val();
+       $.ajax({
             url:'/signin',
-            type:'POST',
-            dataType: 'json',
+            type:'post',
             data:{
-              email:user,
+              email:email,
               password:pass
-            },
-            headers:{
-                'Content-Type':'application/json'
             }
           }).then(function(data){
-            console.log(data)
-            window.location.href='/giaodich';
+          if (data.error) {
+            return $('.template-alert').append(`
+                 <div class="alert alert-danger" role="alert">
+                      Tên tài khoản hoặc mật khẩu không chính xác
+                 </div>
+                 `)
+          }
+          if (!data.error) {
+            if (!data.user.isActive) {
+               return $('.template-alert').append(`
+                 <div class="alert alert-danger" role="alert">
+                      Tài khoản bạn đã bị khóa.Vui lòng liên hệ với tổng đài để được tư vấn
+                 </div>
+                 `)
+            }
+            if (data.user.isActive) {
+                const id=data.user._id;
+                localStorage.setItem('IDUser',JSON.stringify({id,role:data.user.role}));
+                $('.template-alert').append(`
+                 <div class="alert alert-success" role="alert">
+                      Đăng nhập thành công
+                 </div>
+                 `)
+                 setTimeout(function(){
+                    window.location.href='/thongtin'
+                },2000)
+            }
+            
+               
+            }      
+           
           })
+     })
+          
 
-      
-  
-    })
-  </script>
+</script>
+
 </html>
